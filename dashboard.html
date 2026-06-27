@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dashboard {
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        button {
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        .user-info {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>✅ Welcome!</h1>
+        <div class="user-info">
+            <p><strong>Logged in as:</strong> <span id="username"></span></p>
+            <p><strong>Login time:</strong> <span id="loginTime"></span></p>
+        </div>
+        <p>You are now logged in to your website!</p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        if (!localStorage.getItem('loggedIn')) {
+            window.location.href = 'login.html';
+        }
+        
+        // Display username
+        document.getElementById('username').textContent = localStorage.getItem('username');
+        document.getElementById('loginTime').textContent = localStorage.getItem('loginTime');
+        
+        function logout() {
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('username');
+            localStorage.removeItem('loginTime');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
